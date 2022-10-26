@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+if [[ $PWD == "/opt/lampp/htdocs/aed365-api" ]]; then
+	git pull origin staging; exit;
+elif [[ $PWD == "/opt/lampp/htdocs/aed365-backend-adminpanelapi" ]]; then
+	git pull origin stage-reseller; exit;
+elif [[ $PWD == "/opt/lampp/htdocs/aed365-backend" ]]; then
+	git pull origin release/staging; exit;
+else
+	echo "No git repo"; exit;
+fi

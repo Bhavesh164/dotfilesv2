@@ -1,0 +1,19 @@
+#!/usr/bin/env bash 
+var="true";
+i=1;
+backup="bk"
+if [[ ! -z "$1" && -f "$1" && "$#"==1 ]]; then
+	while [ "$var" == "true" ]
+	do
+		if [[ ! -f "$1"."$backup" ]]; then
+			cp -p "$1" "$1"."$backup";
+			break 2;
+		else 
+			i=$((i+1));	
+			backup="bk$i";
+		fi
+	done
+else 
+	# echo $#; # count no. of arguments
+	echo 'No file provided';
+fi
