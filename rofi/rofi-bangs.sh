@@ -30,6 +30,10 @@ LABELS["locate"]=""
 COMMANDS["websearch"]="~/scripts/rofi/rofi-surfraw-websearch.sh"
 LABELS["websearch"]=""
 
+# greenclip clipboard history 
+COMMANDS["clipboard"]='rofi -modi "clipboard:greenclip print" -show clipboard'
+LABELS["clipboard"]=""
+
 # show clipboard history
 # source: https://bitbucket.org/pandozer/rofi-clipboard-manager/overview
 # COMMANDS["clipboard"]='rofi -modi "clipboard:~/.bin/rofi-clipboard-manager/mclip.py menu" -show clipboard && ~/.bin/rofi-clipboard-manager/mclip.py paste'
