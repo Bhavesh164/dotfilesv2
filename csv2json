@@ -1,0 +1,37 @@
+#!/usr/bin/env php
+<?php
+echo "Enter file: ";
+$csv_file=fopen("php://stdin","r");
+$csv_file=fgets($csv_file);
+$file_path=getcwd().'/'.$csv_file;
+$file_path=str_replace("\n","",$file_path);
+$csv_file=str_replace("\n","",$csv_file);
+if(!file_exists($file_path)) {
+	echo "file does not exist \n";
+	exit;
+}
+$extension = pathinfo($csv_file, PATHINFO_EXTENSION);
+if($extension!='csv'){
+	echo "file is not a csv file \n";
+	exit;
+}
+$file_without_extension = basename($csv_file, ".csv");
+$file_data=file_get_contents($file_path);
+$data_array=array_map("str_getcsv",explode("\n",$file_data));
+$labels=array_shift($data_array);
+$column_name=[];
+$final_data=[];
+foreach ($labels as $label) {
+	$column_name[]=$label;
+}
+$count=count($data_array)-1;
+for($j=0;$j<$count;$j++) {
+	$data=@array_combine($column_name,$data_array[$j]);
+	$final_data[$j]=$data;
+}
+$json=json_encode($final_data,JSON_PRETTY_PRINT);
+$this_directory = getcwd();
+$fp = fopen($this_directory . "/".$file_without_extension.".json", "w");
+fwrite($fp, $json); 
+fclose($fp);
+?>
