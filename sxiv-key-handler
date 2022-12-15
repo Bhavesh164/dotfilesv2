@@ -1,0 +1,10 @@
+#!/bin/sh
+# ~/.config/sxiv/exec/key-handler (name of file is key-handler)
+while read file
+do
+	fullpath="$(pwd)/$file"
+	case "$1" in
+		"w") dconf write /org/gnome/desktop/background/picture-uri "'file://$fullpath'" ;;
+		"c") cat "$fullpath" | xclip -selection clipboard -target image/png -i ;;
+	esac
+done
