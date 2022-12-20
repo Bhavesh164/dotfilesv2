@@ -10,4 +10,5 @@ else
 		echo "$bookmark" >> "$file"
 	else 
 		notify-send "Not a valid url" 
+	fi
 fi
