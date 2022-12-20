@@ -6,7 +6,7 @@ if grep -q "^$bookmark$" "$file"; then
 	notify-send "Oops. " "Already bookmarked!"
 else 
 	regex='(https?|ftp|file)://[-[:alnum:]\+&@#/%?=~_|!:,.;]+'
-	if [[ $bookmark =~ $regex ]]; then
+	if [[ $bookmark =~ $regex ]]; then # =~ is regular expression comparison
 		notify-send "bookmark added" "$bookmark saved to a file"
 		echo "$bookmark" >> "$file"
 	else 
