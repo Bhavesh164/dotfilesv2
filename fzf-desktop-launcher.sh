@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Use fzf to list all installed programs
-programs=$(ls /usr/share/applications/ | grep '.desktop' | sed 's/.desktop//g' | fzf)
+programs=$(ls /usr/share/applications/ | grep '.desktop' | sed 's/.desktop//g' | fzf --mutli --print0) # fzf --multi --print0 
 
 # Extract the executable path and name from the .desktop file
 exec=$(grep -oP "^Exec=\K.*" "/usr/share/applications/$programs.desktop") # he "-o" flag of the "grep" command is used to show only the matching part of the output. The "-P" flag is used to enable Perl-style regular expressions.
