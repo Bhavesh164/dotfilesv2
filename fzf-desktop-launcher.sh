@@ -8,7 +8,7 @@ desktop_files=$(find /usr/share/applications -name "*.desktop")
 # alacritty -e '/usr/local/bin/fzf-desktop-launcher.sh'
 
 # Use fzf to select multiple desktop files
-selected_files=$(echo "$desktop_files" | fzf --multi)
+selected_files=$(echo "$desktop_files" | fzf --multi --bind 'ctrl-l:clear-query')
 
 # Launch the selected desktop files
 while read -r file; do
