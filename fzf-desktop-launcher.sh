@@ -9,6 +9,7 @@ exec=$(grep -oP "^Exec=\K.*" "/usr/share/applications/$programs.desktop")
 # to use it in sxhkd
 # ctrl + alt + p
 # xterm -e "bash -c '/usr/local/bin/fzf-desktop-launcher.sh; exec bash'"
+# fzf --multi --print0 ( This will use null characters to separate the selected files, allowing you to delete files with names that contain spaces or special characters.)
 
 # Launch the selected program
 nohup $exec &
