@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 # Find all desktop files in the current directory
 desktop_files=$(find /usr/share/applications -name "*.desktop")
 
@@ -13,3 +14,5 @@ selected_files=$(echo "$desktop_files" | fzf --multi)
 while read -r file; do
 	nohup $(grep 'Exec=' "$file" | sed 's/Exec=//') > /tmp/output.log 2>&1 &
 done <<< "$selected_files"
+
+pkill alacritty
