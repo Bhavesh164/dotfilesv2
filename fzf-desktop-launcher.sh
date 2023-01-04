@@ -15,6 +15,4 @@ while read -r file; do
 	nohup $(grep 'Exec=' "$file" | sed 's/Exec=//') > /tmp/output.log 2>&1 &
 done <<< "$selected_files"
 
-if [[ -z "$selected_files" ]]; then
-	pkill alacritty
-fi
+pkill alacritty
