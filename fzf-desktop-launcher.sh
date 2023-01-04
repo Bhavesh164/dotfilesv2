@@ -8,11 +8,13 @@ desktop_files=$(find /usr/share/applications -name "*.desktop")
 # alacritty -e '/usr/local/bin/fzf-desktop-launcher.sh'
 
 # Use fzf to select multiple desktop files
-selected_files=$(echo "$desktop_files" | fzf --multi --bind 'ctrl-l:clear-query')
+selected_files=$(echo "$desktop_files" | /home/bhavesh/.fzf/bin/fzf --multi --bind 'ctrl-l:clear-query')
 
 # Launch the selected desktop files
 while read -r file; do
 	nohup $(grep 'Exec=' "$file" | sed 's/Exec=//') > /tmp/output.log 2>&1 &
 done <<< "$selected_files"
 
-pkill alacritty
+if [[ -z "$selected_files" ]]; then
+	pkill alacritty
+fi
