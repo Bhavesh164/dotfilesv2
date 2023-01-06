@@ -4,7 +4,7 @@
 git add -A
 
 # commit changes with a message passed as a command line argument
-git commit -m "$@"
+git commit -m "$*"
 
 # check if the "origin" remote is configured
 if git remote | grep -q "origin"; then
