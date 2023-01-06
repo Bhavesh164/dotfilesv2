@@ -12,5 +12,5 @@ if git remote | grep -q "origin"; then
   git push
 else
   # display an error message
-  echo "Error: No remote 'origin' configured."
+  echo -e "\033[31mError: No remote 'origin' configured." # `\033[31m` this will print the message in red color
 fi
